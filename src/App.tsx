@@ -1,6 +1,5 @@
-import React, { Component, ChangeEvent } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 interface LocationFormState {
   provinces: any[];
@@ -13,7 +12,7 @@ interface LocationFormState {
   selectedVillage: string;
 }
 
-class LocationForm extends Component<{}, LocationFormState> {
+class LocationForm extends React.Component<{}, LocationFormState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -34,7 +33,7 @@ class LocationForm extends Component<{}, LocationFormState> {
       .then(data => this.setState({ provinces: data }));
   }
 
-  handleProvinceChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  handleProvinceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const provinceId = event.target.value;
     this.setState({ selectedProvince: provinceId });
 
@@ -43,7 +42,7 @@ class LocationForm extends Component<{}, LocationFormState> {
       .then(data => this.setState({ regencies: data, selectedRegency: '', districts: [], selectedDistrict: '', villages: [], selectedVillage: '' }));
   }
 
-  handleRegencyChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  handleRegencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const regencyId = event.target.value;
     this.setState({ selectedRegency: regencyId });
 
@@ -52,7 +51,7 @@ class LocationForm extends Component<{}, LocationFormState> {
       .then(data => this.setState({ districts: data, selectedDistrict: '', villages: [], selectedVillage: '' }));
   }
 
-  handleDistrictChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const districtId = event.target.value;
     this.setState({ selectedDistrict: districtId });
 
@@ -61,7 +60,7 @@ class LocationForm extends Component<{}, LocationFormState> {
       .then(data => this.setState({ villages: data, selectedVillage: '' }));
   }
 
-  handleVillageChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  handleVillageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const villageId = event.target.value;
     this.setState({ selectedVillage: villageId });
   }
